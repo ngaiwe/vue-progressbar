@@ -3,7 +3,10 @@
     <div class="defaultBox">
       <h2>进度条</h2>
       <div class="defaultBarBox">
-        <NormalBar :value="normalBar"/>
+        <NormalBar 
+          :value="normalBar" 
+          @change="changeNormalBar"
+          @changeEnd="endNormalBar"/>
       </div>
     </div>
   </div>
@@ -16,12 +19,17 @@
     NormalBar
   }
 
-  // let emit = {
-    
-  // }
+  let emit = {
+    changeNormalBar (value) {
+      this.normalBar = NormalBar.empty(NormalBar.Logic.setCurrentTime(value))
+    },
+    endNormalBar () {
+      this.normalBar = NormalBar.empty(NormalBar.Logic.setHidden())
+    }
+  }
 
   let methods = {
-    
+    ...emit
   }
 
   export default {

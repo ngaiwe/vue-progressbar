@@ -41,9 +41,8 @@
                 }
                 delta = timestamp - lastTimestamp
                 distance = speed * delta/1000
-                if (width > 0) {
+                if (width > height) {
                     countDown = this.value.totalTime - new Date(lastTimestamp-startTimestamp).getSeconds()
-                    console.log(width-distance)
                     this.draw(width-distance, startTimestamp, lastTimestamp = timestamp, delta)
                     this.$emit('change',countDown)
                 } else {
@@ -53,6 +52,7 @@
             })
         },
         bar (ctx, width, height,color) {
+            if (Math.floor(width) <= height) color = 'rgba(0,0,0,0)'
             ctx.fillStyle = color
             ctx.fillRect(height/2, 0, width-(height), height)
             ctx.beginPath()
@@ -64,11 +64,27 @@
         }
     }
 
+    let Logic = {
+        setCurrentTime (currentTime) {
+            return {
+                ...this.value,
+                currentTime
+            }
+        },
+        setHidden () {
+            return {
+                ...this.value,
+                showInfo: false
+            }
+        }
+    }
+
     export default {
         name: 'NormalBar',
         props: ['value'],
         empty,
         methods,
+        Logic,
         mounted () {
             this.draw(this.value.width)
         }
