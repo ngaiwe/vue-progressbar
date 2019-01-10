@@ -3,7 +3,7 @@
     <div class="defaultBox">
       <h2>进度条</h2>
       <div class="defaultBarBox">
-        <NormalBar/>
+        <NormalBar :value="normalBar"/>
       </div>
     </div>
   </div>
@@ -16,18 +16,18 @@
     NormalBar
   }
 
-  let emit = {
+  // let emit = {
     
-  }
+  // }
 
   let methods = {
-    ...emit
+    
   }
 
   export default {
     data () {
       return {
-        
+        normalBar: NormalBar.empty()
       }
     },
     name: 'App',

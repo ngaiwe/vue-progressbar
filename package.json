@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "基于vue的一款进度条组件库",
   "author": "weiran",
-  "private": false,
+  "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
   "dependencies": {
-    "npm-check-updates": "^2.15.0",
     "vue": "^2.5.2"
   },
   "devDependencies": {
@@ -47,7 +46,7 @@
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^3.1.11",
+    "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
   "repository": {
@@ -55,7 +54,13 @@
     "url": "git@github.com:ngaiwe/vue-progressbar.git"
   },
   "main": "dist/vue-progressbar.min.js",
-  "keywords": ["vue", "vue-progressbar", "progress-bar", "bar", "进度条"],
+  "keywords": [
+    "vue",
+    "vue-progressbar",
+    "bar",
+    "pargress-bar",
+    "进度条"
+  ],
   "engines": {
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"

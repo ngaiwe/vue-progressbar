@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import '@/css/reset.css'
-import NormalBar from '@/components/nrmalBar/NormalBar.vue'
+import NormalBar from '@/components/normalBar/NormalBar'
 
 Vue.config.productionTip = false
 
