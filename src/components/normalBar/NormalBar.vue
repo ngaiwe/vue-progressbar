@@ -3,7 +3,7 @@
         <div class="bar">
             <canvas ref="canvasBar" :width="value.width" :height="value.height"></canvas>
         </div>
-        <div class="progressText" v-if="value.showInfo">{{value.currentTime}}s</div>
+        <div class="progressText" :style="value.testStyle" v-if="value.showInfo">{{value.currentTime}}s</div>
     </div>
 </template>
 
@@ -18,6 +18,13 @@
             barDefaultColor: '#E9E9E9',
             barColor: '#FFB936',
             showInfo: true,
+            testStyle: {
+                fontSize: '31px',
+                fontWeight: '600',
+                color: 'rgba(245,166,35,1)',
+                lineHeight: '38px',
+                marginTop: '20px'
+            },
             ...obj
         }
     }
@@ -98,11 +105,6 @@
 .progressBar .progressText{
     width: 100%;
     text-align: center;
-    font-size:31px;
-    font-weight:600;
-    color:rgba(245,166,35,1);
-    line-height:38px;
-    margin-top: 20px;
 }
 </style>
 
