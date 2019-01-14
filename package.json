@@ -1,9 +1,9 @@
 {
-  "name": "vue-progressbar",
-  "version": "1.0.0",
+  "name": "vue-progressbars",
+  "version": "1.0.1",
   "description": "基于vue的一款进度条组件库",
   "author": "weiran",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
@@ -53,7 +53,7 @@
     "type": "git",
     "url": "git@github.com:ngaiwe/vue-progressbar.git"
   },
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "keywords": [
     "vue",
     "vue-progressbar",

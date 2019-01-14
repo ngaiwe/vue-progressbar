@@ -7,6 +7,14 @@ yarn-error.log*
 vue-onoffs-1.0.1.tgz
 yarn.lock
 package-lock.json
+# build/
+# config/
+# static/
+# src/
+# .babelrc
+# .editorconfig
+# .postcssrc.js
+# index.html
 
 # Editor directories and files
 .idea
