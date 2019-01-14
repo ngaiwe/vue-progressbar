@@ -17,7 +17,7 @@
 - 注册组件 在vue文件中引用组件
 		
 	``` example 
-	import NormalBar from 'vue-progressbar/src/components/normalBar'
+	import NormalBar from 'vue-progressbar/lib/normalBar'
 	components = {
 		NormalBar
 	}
