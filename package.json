@@ -1,6 +1,6 @@
 {
   "name": "vue-progressbars",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "基于vue的一款进度条组件库",
   "author": "weiran",
   "private": false,
