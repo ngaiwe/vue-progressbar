@@ -1,69 +1,32 @@
-'use strict'
-// Template version: 1.3.1
-// see http://vuejs-templates.github.io/webpack for documentation.
-
 const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-    proxyTable: {},
-
-    // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
-    errorOverlay: true,
-    notifyOnErrors: true,
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
-
-    
-    /**
-     * Source Maps
-     */
-
-    // https://webpack.js.org/configuration/devtool/#development
+    assetsPublicPath: '/', // 设置启动后访问路径前缀
+    proxyTable: {}, // 代理
+    // devserver 所需配置
+    host: 'localhost', // ip
+    port: 8080, // 端口
+    notifyOnErrors: true, // 是否显示消息提示信息
+    // Source Maps
     devtool: 'cheap-module-eval-source-map',
-
-    // If you have problems debugging vue-files in devtools,
-    // set this to false - it *may* help
-    // https://vue-loader.vuejs.org/en/options.html#cachebusting
-    cacheBusting: true,
-
-    cssSourceMap: true
   },
-
   build: {
-    // Template for index.html
+    // 编译的文件入口地址
     index: path.resolve(__dirname, '../dist/index.html'),
-
-    // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-
-    /**
-     * Source Maps
-     */
-
+    // 打包输出path 
+    assetsRoot: path.resolve(__dirname, '../dist'), // 打包后的地址
+    assetsSubDirectory: 'static', // 静态目录拷贝出的存放地址
+    assetsPublicPath: '/', // 打包后的目录地址
+    // 是否启用source map source类型
     productionSourceMap: true,
-    // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
-
-    // Gzip off by default as many popular static hosts such as
-    // Surge or Netlify already gzip all static assets for you.
-    // Before setting to `true`, make sure to:
-    // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
+    // 文件压缩是否启用gizp和匹配文件
+    productionGzip: true,
     productionGzipExtensions: ['js', 'css'],
-
-    // Run the build command with an extra argument to
-    // View the bundle analyzer report after build finishes:
-    // `npm run build --report`
-    // Set to `true` or `false` to always turn it on or off
+    // 是否启用蓝图 - 查看打包细节
     bundleAnalyzerReport: process.env.npm_config_report
   }
 }

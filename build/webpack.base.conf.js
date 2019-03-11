@@ -1,19 +1,14 @@
-'use strict'
-const path = require('path')
+const os = require('os')
 const utils = require('./utils')
 const config = require('../config')
+const HappyPack = require('happypack')
 const vueLoaderConfig = require('./vue-loader.conf')
-
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
-
-
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 module.exports = {
-  context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: utils.resolve('src/main.js')
   },
   output: {
     path: config.build.assetsRoot,
@@ -26,20 +21,20 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': utils.resolve('src'),
     }
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        loader: 'happypack/loader?id=happyBable',
+        exclude: /(node_modules|bower_components)/,
+        include: [utils.resolve('src'), utils.resolve('node_modules/webpack-dev-server/client')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -65,18 +60,16 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
+
     ]
   },
-  node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
-    setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty'
-  }
+  plugins: [
+    new VueLoaderPlugin(),
+    new HappyPack({
+      id: 'happyBable',
+      loaders: ['babel-loader'],
+      threadPool: happyThreadPool,
+      verbose: true
+    })
+  ]
 }
