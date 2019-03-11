@@ -3,6 +3,8 @@ config/
 dist/
 static/
 src/
+cache-loader/
+node_modules/
 .babelrc
 .editorconfig
 .postcssrc.js
